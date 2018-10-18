@@ -1,4 +1,4 @@
-## GIT Commands with Explanations
+# GIT Commands with Explanations
 
 Configuration after installing git from the official website.
 
@@ -159,3 +159,64 @@ We're back to a clean working directory, what about the contents of that
 file ?
  When we open up that file, our changes are gone.
    
+#Creating New Alias for git log : 
+
+If I type the standard "git log" command, I see that I have two commits.
+
+So, let's use "git log --oneline", which will provide a simplified 
+commit entry,
+providing a lot of that information on a single line, instead of 
+multiple lines ,
+"--graph", which will provide an asterisk based graph denoting our 
+branching hierarchy,
+"--decorate", which will tell us which commits are a part of which 
+branches,and other labels within the Git repository ,
+ and then "--all",which will provide the history for all the branches 
+that are available in this repository.
+
+*git log --oneline --graph --decorate --all
+
+Let's press enter; now we have a radically different view of our "git 
+log" command.
+
+To create a Git alias, which is basically a new command that is a 
+shortened representation 
+of an existing longer command, we're going to piggyback off of Git's 
+"config" command.
+
+At the user level, not at the repo level; space; and then the config key 
+"alias."
+then whatever name you want to use for your new command, in my case 
+"hist"
+space; and then, in double quotes, the command, leaving out the leading 
+"git" command
+so, instead of "git log", you just start with "log",
+so in double quotes, I have "log --oneline --graph --decorate --all".
+
+*git config --global alias.hist "log --oneline --graph --decorate --all"
+
+Double check that line, and then press enter.
+We can double check this entry made it in by listing Git's “config” 
+entries
+"git config --global --list", 
+
+*git config --global --list
+
+then press enter.
+And, at the very end, you see "alias.hist=log --oneline --graph 
+--decorate --all".
+
+Alright, let's test that out; to use an alias, just type "git"; space; 
+and then the alias name,in my case "hist", then press enter. If you were 
+successful,
+you should have the exact same output as the "log" command that we had 
+previously.
+Using aliases does not preclude you from passing additional parameters
+to the underlying command. So, in this case, if I type "git hist", 
+space,
+and then the option "--", space, and then a file, 
+
+*git hist
+
+then press enter, If sucessfull it will display the same results as we 
+had above.
