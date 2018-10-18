@@ -306,5 +306,69 @@ To complete the deletion, we need to actually do the commit:
 "git commit -m "deleting demo file" "
 
 
+# Managing files 
+
+-> We're going to rename and delete files
+outside of Git, and see how Git reacts. 
+Let's create a new file using the "touch" command: "touch 
+myfile.txt".
+Note, this is not a Git command, this is just a bash command
+that is used to update or create new files
+Doing an "ls", we see we have our "myfile.txt",
+and I will use the bash command "mv", not the "git mv" command,
+to rename the file "LICENSE.md" to "LICENSE.txt". Press enter.
+If we do an "ls -l", we see we have our "myfile.txt",
+and "LICENSE.md" has been renamed to "LICENSE.txt"; let's see 
+how Git sees this.
+Well Git sees the "myfile.txt" as an untracked file, which is 
+not surprising,
+but it sees the rename as a deletion, and adding an untracked 
+file.
+So, we need to tell Git about our recent changes.
+For simply having deletions, we can use the "-u" parameter with 
+the "git add" command.
+Type "git add -u", which stands for update,
+
+* git add -u
+
+then press enter.
+
+-> Now, let's do a "git status"; now we have our "Changes to be 
+committed",
+which means it picked up the "LICENSE.txt" file, but it didn't 
+pick up the "myfile.txt".
+So, in order to include both additions and deletions, you need 
+to use "git add -A";
+
+* git add -A
+
+that will cover all types of modifications possible on the 
+current working directory
+and make those updates accordingly in the Git index.
+Now, if I do a "git status", it properly sees the "LICENSE.md" 
+file being renamed to "LICENSE.txt",
+ and it also picks up the new 
+file, "myfile.txt"
+Again, at this point, these changes are only staged.
+Let's move forward by committing; great, now we've committed 
+those changes.
+What if we determined that we really don't want that 
+"myfile.txt"?
+We could use the bash command "rm" to delete the file at the 
+operating system level.
+Let's do that. Now, if we do a "git status", it sees the file 
+has been deleted.
+Let's stage it; now if we do a "git add -u", it will pick up the 
+deletion and stage it.
+
+* git add -u
+
+Now, it sees the deleted file, and staged it; now, let's commit 
+that":
+"git commit -m "removed myfile.txt". Great, now that file has 
+been removed.
+
+
+
 
 
