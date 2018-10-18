@@ -1,5 +1,12 @@
 # GIT Commands with Explanations
 
+Please note that the commands are explained in a narrative 
+style. I have designed it in such a way that everyone can 
+understand the basic git commands.
+
+Please type in the code as i say so you can see the changes for 
+yourself.
+
 Configuration after installing git from the official website.
 
 All the commands shown are to be typed in  the git bash.
@@ -370,5 +377,70 @@ been removed.
 
 
 
+# Excluding unwanted Files
 
+
+-> We're going to look at ignoring files and folders
+that we don't want tracked in our Git repository.
+Listing my files, I have a "LICENSE.txt" file, and a "README.md" 
+file,
+both files I want in my Git repository.
+But, I'm going to 
+pretend
+that this repository is part of an application that's contained 
+within it,
+and as it runs, it's generating logs. So, with my text editor 
+open,
+I'm just going to add some random lines to represent a log.
+Alright, I'm going to save and close this file;
+If I do an "ls", you can see I have my "application.log" file.
+And, typically, we don't want to store log files, or any other 
+files
+that have been generated, or aren't original source that's part 
+of this project.
+
+If I do a "git status", Git sees that we have that 
+"application.log" file.
+And, while I could always try to remember to exclude that file 
+when I'm doing my commits,
+I know eventually I'll forget, and just add everything,
+and that log file will end up in my Git repository.
+
+Thankfully, Git provides a nice facility for excluding files and 
+folders
+we don't want in our Git repository; it's called a ".gitignore" 
+file.
+
+So, type "touch .gitignore", 
+
+* touch .gitignore
+
+-> then press enter.
+
+And "nano .gitignore"
+
+* nano .gitignore
+
+
+-> And, the syntax for this file is simply one pattern or 
+expression per line.
+
+I could specifically target that exact file, but more likely I 
+want to target all log files,
+so I'll use an expression instead; "*.log", which means any file
+that ends with ".log" will be excluded. 
+Let's save
+and then 
+close.
+Back at the terminal, you can see the ".gitignore" is already at work.
+What you'll notice is that the ".gitignore" file, itself being a 
+file,
+needs to be tracked in the Git repository.
+So, add the ".gitignore" file to the Git staging area.
+"git commit -m", space, and then our commit message: "Adding 
+ignore file".
+Great, I'm back to a clean working directory, and our 
+"application.log" file has been excluded.
+It's still in the file system, but it's not in our Git 
+repository.
 
