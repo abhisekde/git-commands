@@ -66,3 +66,19 @@ cases.
 
 And, for the most part, anything that can be passed into the 
 "diff" command can also be passed into the "difftool" command.
+
+
+
+# More about Head and pointers
+
+
+-> In addition to branches, tags, and other labels for commits
+Git has special markers or pointers. 
+One popular marker is 
+called HEAD.
+* HEAD is normally the last commit of the current branch.
+That means that, as we switch branches, the location of HEAD moves
+to match the last commit location of that branch.
+While this is generally true, it is also possible to manually 
+move the head location someplace other than the last commit
+For now, HEAD points to the last commit of the current branch.
