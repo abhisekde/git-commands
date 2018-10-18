@@ -203,7 +203,7 @@ We can double check this entry made it in by listing Git's “config”
 entries
 "git config --global --list", 
 
-*git config --global --list
+* git config --global --list
 
 then press enter.
 -> And, at the very end, you see "alias.hist=log --oneline 
