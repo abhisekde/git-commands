@@ -1,4 +1,4 @@
-#GIT Commands with Explanations
+# # GIT Commands with Explanations
 
 Configuration after installing git from the official website.
 
