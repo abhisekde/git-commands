@@ -51,7 +51,7 @@ editing we can exit by Pressing Ctrl + X and then pressing Y to confirm
 
 # To add file to staging area : 
 
-*git add file.txt
+* git add file.txt
 
 ->This moves the file from simply bieng in the working directory to git 
 staging area.
