@@ -1,7 +1,7 @@
 
 # To initialise the git to your name and Email :
 
-#In git bash:
+# In git bash:
 
 * git config --global user.name "Your Name"
 
@@ -10,7 +10,7 @@
 Note: " " in the above code is required. Change your name and your email 
 to desired values.
 
-#Git Initialisation :
+# Git Initialisation :
 
 Create a new folder for your project and using a git command we can 
 initialise it.
@@ -27,13 +27,13 @@ the "demo" folder.
 
 
 
-#Git Status check :
+# Git Status check :
 
 * git status
 
 ->This command is used to check status of the repo.
 
-#Create a new file : 
+# Create a new file : 
 
 * touch file.txt
 
@@ -41,7 +41,7 @@ the "demo" folder.
 values to like readme.txt and others.Since it is created in the repo it 
 will be untracked by git.
 
-#Edit your Newly created file :
+# Edit your Newly created file :
  
 * nano file.txt
 
@@ -49,14 +49,14 @@ will be untracked by git.
 editing we can exit by Pressing Ctrl + X and then pressing Y to confirm 
 .
 
-#To add file to staging area : 
+# To add file to staging area : 
 
 *git add file.txt
 
 ->This moves the file from simply bieng in the working directory to git 
 staging area.
 
-#To commit the file :
+# To commit the file :
 
 
 * git commit -m "First file in the Repo "
@@ -65,7 +65,7 @@ staging area.
 using the commit message, "First file in  Repo"
 
 
-#Git log to view history of commits : 
+# Git log to view history of commits : 
 
 * git log
 
