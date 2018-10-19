@@ -623,3 +623,164 @@ update: "updating readme again".
 Back to a clean working directory, and 
 we're done.
 
+
+# Reset and Reflog
+
+We're going to do a little bit of time 
+travel with "reset" and "reflog".
+Let's take care of that; in another line, 
+I'm going to put "Updates in stage".
+So, I did the "git add" to add that Readme 
+file change to stage,
+and then I put another line to denote some 
+changes that we have in our working 
+directory.
+
+If we do a "git status", we see we have 
+our modifications detected,
+in both the staging area, and just in our 
+working directory
+.
+Now, there may be times when you need to 
+go to a different commit point;
+if you made a mistake in the last commit, 
+for example, that you didn't need to have 
+committed.
+You want to roll back to a previous 
+commit; that's certainly fine.
+Do a "git hist"; you can see we have 
+several commits to choose from.
+
+So, I'm going to do a "git reset"; I'm 
+passing in the commit id that I want to 
+reset to.
+And, the option "--soft".
+
+* git reset (commit id) --soft
+
+-> And, the reason I'm doing that, 
+There are actually 3 distinct ways of 
+resetting:
+there is a soft reset, which is what I'm 
+about to do;
+there's the default, which is called 
+mixed; and then there is hard.
+
+The soft reset is the least destructive of 
+them all;
+basically, all it does is change where 
+HEAD is pointing.
+So, let's try that out;
+Make a note of where HEAD is pointing to 
+right now.
+If we do a "git hist', as expected, HEAD 
+is now pointing to another commid it,
+which is the commit id that we passed in 
+to the reset command.
+Let's check out our "git status"
+We have files that have been modified,
+and in our staging area. 
+That's what soft allows us to do,
+is simply change the commit id that head 
+is pointing to,
+which means it preserves the Git staging 
+area, and our working directory.
+
+Effectively, we can back out our changes, 
+make minor modifications to them,
+and then commit where head is currently 
+pointing.
+Let's try this another time; I'm going to 
+choose another commit id .
+
+And, although "mixed" should be default, 
+there's no harm in specifying it
+just to make sure for our example; let's 
+go ahead 
+
+* git reset (commit id) --mixed
+
+and press enter.
+Now, what's interesting, it actually 
+unstaged the number of changes.
+If we do a "git hist", we can see that 
+HEAD is now pointing to that commit id.
+
+If we do a "git status", we have several 
+files that have been unstaged,
+and placed into our working directory; 
+there's nothing in our staging area.
+Let's try this one last time. Now type 
+"git reset", followed by the commit id:
+I'm using " (another commit id) --hard".
+This is the most destructive of all the 
+reset modes.
+
+
+Now, press enter. It simply tells us that 
+our HEAD is now at a new location;
+if we do a "git status", we see that our 
+working directory is now clean,
+which means that any changes that were 
+pending have been wiped out,
+along with anything that was in the 
+staging area.
+Again, a hard reset is the most 
+destructive type of a reset.
+Apart from the handful of changes we made 
+at the very beginning,
+we really haven't lost a whole lot.
+
+And, you're thinking; well, if we do a 
+"git hist", our head is now pointing all 
+the way down
+to the second commit in our history.
+If we just do "git log --oneline", that is 
+we leave out the "--all",
+we see we only have two commits being 
+listed.
+
+So, if you see this list of history, then 
+you might be a little worried;
+that's ok, because there's another command 
+we can use in conjunction with reset
+that makes things a lot better, it's 
+called "reflog".
+Although both "git log" and "git reflog" 
+share similar sounding names,
+
+
+"git log" shows us our commit ids, and 
+"git reflog" shows us
+all the different actions we've taken 
+while in this repository.
+
+* git reflog
+
+This allows us to get all the way back to 
+a specific commit id if we need to.
+For example, let's go to "head@{3}",
+which is the last commit before we did any 
+resets; that's "(commit id)".
+I'm going to copy that commit id, do a 
+"git reset";
+
+* git reset --hard (commit id)
+
+at this point, since there's no pending 
+work, we can leave it at the default,
+or we can specify hard; then paste in our 
+commit id; and then press enter.
+
+We've now moved our commit id back. 
+Do a "git log --oneline";
+looks like we have our history back again. 
+And using our "git hist" alias,
+we can see our Git history looks like the 
+repo prior to doing any of the resets.
+Using "reset"+"reflog" really does provide 
+you full control
+over time travel within your Git 
+repository.
+
+
