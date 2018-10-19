@@ -16,6 +16,9 @@ All the commands shown are to be typed in  the git bash.
 Basic commands like ls , cd , pwd , dir are also used per 
 preference.
 
+This the version 1 of this project. A better version is under construction. It include screenshots of the tags and the results. This will make it much more easier to learn and understand the git commands.
+For the time being please stick with this...
+
 Please follow this in the corect specified order for best 
 results
 
