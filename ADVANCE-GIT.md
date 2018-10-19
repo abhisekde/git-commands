@@ -453,3 +453,93 @@ Great, so we still have that ".orig" file;
 I really don't like that guy hanging 
 around, so I'm just going to delete him. 
 Great.
+
+
+# Marking Special Events with Tagging
+
+
+We're going to look at Git tags.
+If I do a "git hist", you can see that we 
+have several commits that are part of this 
+repository.
+And, at this point, we've been working 
+with the repository for a pretty good long 
+time.
+
+So, I'd like to mark this point in the 
+repository with some type of milestone.
+To do that, Git supports a notion of tags.
+Tags are just labels that you can put at 
+any arbitrary commit point,
+and, by default, if you don't specify a 
+commit, it will be the current commit or 
+HEAD.
+
+And, there are two types of tags; 
+lightweight tags, which you can just give 
+a name,
+and Git creates it for you. 
+If you do a 
+"git tag --list",
+
+* git tag --list
+
+-> You can see that my tag 
+is listed.
+Also, when we do our "git hist" command, 
+we see "tag: mytag".
+Now, this is a lightweight tag; there's no 
+associated information with it.
+
+What I prefer using are what's called 
+annotated tags,
+which means they have extra information 
+associated with the tag.
+So, before we do that, let's delete 
+"mytag"; type "git tag -d" for delete, 
+then the tag name.
+
+* git tag -d mytag
+
+-> Great, we've deleted that tag.
+If we use the syntax "git tag -a", for 
+annotated tag; then the tag name "v1.0";
+then "-m"; followed by, in double quotes, 
+a commit message:
+effectively, we're associating a commit 
+message with this tag.
+
+* git tag -a v1.0 -m "Release 1.0"
+
+Double check, and then press enter;
+
+"git tag --list"
+-> We have our "v1.0" tag.
+And we see that we have our "tag: v1.0" 
+mentioned in our commit history,
+but so far we haven't seen anything 
+different than our lightweight tag.
+So, where does the annotation come in?
+
+Well, if we use our "git show" command, 
+and then specify our tag name,
+"git show v1.0", 
+
+* git show v1.0
+
+then press enter,
+-> It shows us that we have our tag, 
+"v1.0"; 
+the tagger, which is myself;
+the date that it was tagged; the quote on 
+quote commit message that goes with that 
+tag;
+followed by the rest of the information 
+for that commit that's associated with 
+that tag,
+including its own commit message from 
+before.
+This is really useful when you're trying 
+to note major milestones
+and you might want to associate some 
+information with it.
