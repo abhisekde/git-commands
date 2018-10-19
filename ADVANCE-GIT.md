@@ -82,3 +82,67 @@ to match the last commit location of that branch.
 While this is generally true, it is also possible to manually 
 move the head location someplace other than the last commit
 For now, HEAD points to the last commit of the current branch.
+
+
+# Branching and Merge Types
+
+
+Branching and merging are important 
+concepts in Git.
+Git makes doing both branching and merging 
+a lot easier than previous tools,
+and thus, many workflows rely upon them.
+ a branch is just a timeline of commits.
+
+More accurately, branches are the names or 
+labels we give timelines in Git.
+We can create and delete branches without 
+affecting timelines;
+all we are doing is creating or deleting 
+labels of commit rages in Git.
+
+So far, we have been working on the 
+default master branch.
+Now, we can create a new branch to do a 
+bit of work, and then rejoin the master 
+branch by merging in any changes that 
+occurred on 
+the new branch.
+While merging, Git tries it's best to 
+automatically merge when possible,
+which leads to several types of merge 
+scenarios possible.
+
+-> First, the fast-forward merge; this 
+happens in the simplest of cases,
+when no additional work has been detected 
+on the parent branch, or in our case 
+master.
+Git will simply apply all commits from the 
+other branch directly onto the parent 
+branch,
+as if we never branched off to begin with.
+Of course, we can disable the fast-forward 
+merges if they are undesired for some 
+reason.
+
+-> Secondly, automatic merges; this 
+happens 
+when Git detects
+non-conflicting changes in the parent 
+branch.
+Git is able to automatically resolve any conflicts.
+In doing so, the old branch's timeline is 
+preserved, and a new merge commit
+is created to show the merging of the two 
+branches. 
+
+-> Thirdly, manual merge
+this happens when Git is unable to 
+automatically resolve any conflicts.
+Git enters a special conflicting merge 
+state, which means that
+all merge conflicts must be resolved prior 
+to moving forward with a commit.
+Once all conflicts have been resolved, 
+those changes are saved as a merge commit.
