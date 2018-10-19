@@ -543,3 +543,83 @@ This is really useful when you're trying
 to note major milestones
 and you might want to associate some 
 information with it.
+
+
+Saving Work in Progress with Stashing
+
+
+We're going to take a quick look at 
+stashing.
+I'm currently in the "demo" Git 
+repository, on the master branch,
+in a clean working directory. Let's modify 
+the "README.md" file.
+And, doing a "git status" we see we have 
+our modified file.
+But, what if we decide that we're really 
+not supposed to be doing that right now?
+What if we decide that we really should 
+have started this on a branch,
+or maybe we need to change content and 
+work on something else for a while?
+Well, we can do that by using Git's 
+stashing ability.
+Alright, so let's do that; do a "git 
+stash"
+
+* git stash
+
+and it tells me that the HEAD was 
+saved,
+which is the last commit on the current 
+branch, which is master.
+And, it saved it in a work in progress.
+If we do a "git stash list", 
+
+* git stash list
+
+it shows us 
+our stashes.
+
+We have a "WIP on master", and it shows us 
+the last commit,
+and the associated commit message.
+After the "stash", we're actually back on 
+a clean working directory.
+Let's apply our "emergency fix" if you 
+will; save and close.
+"updating the license file"; this will 
+qualify as our interruption that we had to 
+take care of.
+
+Back to a clean working directory.
+Now, let's apply our stash; do a "git 
+stash pop".
+
+* git stash pop
+
+So, that will do two actions at once; one 
+is an "apply", and then the next is a 
+"drop".
+
+The "stash apply" will apply whatever the 
+stash is: the last stash.
+In this case, we put those changes back in 
+the Readme file,
+then, after that, it dropped that stash 
+that was applied.
+Now, if I do a "git stash list" 
+
+* git stash list
+
+I have no 
+results.
+If I go back to the "README.md" file,
+you can see the Readme file was updated 
+like it was prior to the stash.
+
+Let's move forward by committing our 
+update: "updating readme again".
+Back to a clean working directory, and 
+we're done.
+
