@@ -146,3 +146,171 @@ all merge conflicts must be resolved prior
 to moving forward with a commit.
 Once all conflicts have been resolved, 
 those changes are saved as a merge commit.
+
+
+
+# Simple Branching Example
+
+
+We have a modified "README.md" file.
+And that's ok; maybe we intended that this 
+file should be modified experimentally,
+or as part of a feature of a next update.
+Either way, we can use feature or topic 
+branches
+in order to separate out changes that we 
+want to make off of master.
+If we use the "git branch" command,
+
+* git branch
+
+-> we can 
+see that we have a single branch named 
+master.
+And, right now, it's highlighted green, 
+and with an asterisk,
+which denotes that that's the current 
+branch.
+Now, I could create another branch by 
+using the "branch" command
+and then separately switching to that 
+branch, but I can accomplish both
+by using the checkout command with a "-b" 
+option.
+
+Type "git checkout -b", for creating the 
+branch; space;
+and then the name of the branch you wish 
+to create and switch to,
+I'm calling it "updates";
+
+* git checkout -b updates
+
+then press enter.
+-> Now, a couple things have happened. 
+One: 
+it created a new branch called "updates",
+then it switched to that new branch and, 
+since there were modifications
+pending in the working directory, it 
+carried those modifications forward into 
+that new branch.
+This is a technique you can use when you 
+start working on master,
+and you decide later that, before 
+committing, that these changes really 
+should be isolated
+into their own feature or topic branch. 
+
+Alright, let's continue,
+and I'm going to add some changes to the 
+readme; save 
+and close.
+
+Back at the terminal, we're going to add 
+those changes.
+
+And now, let's commit: "Adding updates 
+from branch".
+
+Great, so if I do a "git status", it shows 
+that I'm on branch "updates",
+and I'm in a clean working directory with 
+nothing to commit.
+
+If I do a "git hist". Something that 
+should be noted, we have the latest 
+commit,
+which is on head and updates, but if we go 
+one back,
+we see that is the commit that "master" is 
+associated with.
+
+We can see what the changes are by using 
+our "diff" command.
+And, the "diff" command will allow us to 
+pass in the names of branches instead of 
+commit IDs.
+So, I'm using "git diff updates master", 
+and it shows us what's different.
+
+Alright, let's say that I'm finished with 
+whatever updates I needed on the "updates" 
+branch.
+In order to integrate any changes on my 
+branch,
+I need to first switch to my parent 
+branch, which is master.
+In order to switch branches, we use the 
+checkout command
+"git checkout", branch name; in this case 
+"master",
+
+* git checkout master
+
+and press enter.
+-> Great now let's look at our history 
+from 
+the master perspective.
+Again, it shows that HEAD is now on 
+"master",
+since head typically means the last commit 
+on the current branch.
+And, since the current branch is "master", 
+HEAD and "master" are sharing the same 
+commit id.
+Since our "hist" command specifies the 
+"--all" parameter to our log command,
+we also notice the commit id associated 
+with the "updates" branch.Well, let's go 
+ahead and merge in those changes. Type 
+"git merge"; space;
+and then the name of the branch you wish 
+to merge into the current branch,
+
+* git merge updates
+
+then press enter. 
+-> For this merge, it's 
+such a simple merge
+that it's able to do something called a 
+fast-forward,
+which means that we're going to pretend 
+that you never really
+switched away from "master" in order to 
+make those updates.
+So, we're going to apply those commits 
+directly to the master branch.
+Now, if we do a "git hist", we see that 
+HEAD, "updates", and "master",
+all point to the same commit id; that's 
+the effect of a fast-forward merge.
+There are options to disable fast-forward 
+merges from happening,
+even though they may be possible, but most 
+of the time, you'll want this behavior.
+Once we have completed merging in our 
+changes, we no longer need the updates 
+branch.
+Effectively, branches in Git are just 
+labels of timelines
+and, once they've been integrated into the 
+main timeline, there's no need for them 
+anymore.
+
+Let's use the "git branch" command: "git 
+branch -d", for delete;
+followed by the name of the branch that we 
+wish to delete,
+in this case, "updates"; 
+
+* git branch -d updates
+
+press enter.
+-> Great, we've deleted that branch;
+we're back to just the "master" branch.
+We do a "git hist"; we see we no longer 
+have the "updates" branch associated with 
+that  commit id.
+Note: the history didn't go away, just the 
+label, "updates", did.
