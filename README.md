@@ -1,5 +1,7 @@
 # GIT Commands with Explanations
 
+This is a simple git commands walkthrough.Follow as it is in the file and get the best out of git. 
+
 Please note that the commands are explained in a narrative
 style. I have designed it in such a way that everyone can
 understand the basic git commands.
