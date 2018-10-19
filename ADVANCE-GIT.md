@@ -314,3 +314,142 @@ have the "updates" branch associated with
 that  commit id.
 Note: the history didn't go away, just the 
 label, "updates", did.
+
+
+# Conflict Resolution
+
+
+We're going to walk through the steps 
+necessary to cause a conflict, and then 
+resolve that 
+conflict when working with branches.
+In my terminal, I'm currently in the 
+"demo" Git repository.
+I'm on the master branch, with nothing to 
+commit, since I'm in a clean working 
+directory.
+While on the master branch, let's take a 
+look at our Readme file.
+Alright, so we have our updates that were 
+integrated from our previous example.
+We can close out of here; let's create our 
+branch that we're going to work on.
+I'm going to create a branch called 
+"very-bad"; now switch to it.
+"git branch -a", which shows us all 
+branches;
+
+* git branch -a
+
+we see that we have our "master" branch, 
+and our "very-bad" branch.
+And, at this point, our "very-bad" branch 
+has the green highlighting
+and the asterisk, denoting this is the 
+current branch.
+Let's modify our Readme file; let's do it 
+in such a way that will cause a conflict,
+which means updating the same part of the 
+file on both branches.
+So, I changed that line to "This is bound 
+to cause trouble!".
+Let's go ahead and save and close.
+
+I'm going to use my express commit 
+technique, saying it's a "very bad 
+update".
+And, we have "very bad update" at the very 
+top, which is the last commit.
+
+Let's return back to master, and before I 
+merge in those changes
+I'm going to pretend to be another 
+developer, or perhaps I'll just forget
+about those changes that I made on the 
+"very-bad" branch.
+I'll modify our Readme file exactly in the 
+same location.
+Change that to "I hope this isn't much of 
+a problem", save and close.
+Back at the terminal, again, another 
+express commit: "Causing issues again".
+Now, let's merge our "very-bad" branch 
+into our master branch.
+
+Let's remind ourselves of our branch 
+names. "git merge very-bad";
+and, as expected, the auto-merging was 
+unable to resolve the conflict.
+Auto merging's pretty good, but it's not 
+perfect, and it can't read minds,
+so it doesn't know which version of our 
+file we want.
+This places us in a merging state, which 
+is denoted by our command prompt
+with the branch name on one side, and 
+"|MERGING".
+The "README.md" file is the file that's 
+implicated in the merge conflict;
+if we "cat" the file, which just outputs 
+the entire contents of that file,
+
+the current version has these weird 
+carrots that denote the parts of the file 
+that are conflicted.
+
+And, you can see that "HEAD" versus 
+"very-bad".
+Since this happens to be a very simple 
+case, we could manually modify this file;
+if we have a merge tool configured with 
+Git, 
+so let's use it.
+While in a merging state, just type "git 
+mergetool", then press enter.
+
+And, we can see that we have the various 
+versions of our file,
+and the possible solution at the bottom.
+Any number of these possible solutions can 
+be incorporated;
+let's say I like that one. Once I'm done, 
+I need to click the save button
+in order to save those changes that I've 
+made to the Readme file.
+Now, once I've done that, and I have no 
+further conflicts to resolve,
+
+If there are no more files with merge 
+conflicts,
+then you'll simply return back to the 
+command prompt.
+
+To complete the merge, we need to commit 
+what we've saved: "git commit -m",
+we can pass in our commit message: 
+"Resolving conflict", then press enter.
+
+If that successfully resolves the 
+conflict,
+you'll be returned back to a command 
+prompt that looks more normal.
+In this case, we're back to our branch 
+name, simply in parenthesis.
+
+If we do a "git status", we can see we 
+have a ".orig" file that is untracked.
+".orig" is the original version of the 
+Readme file.
+Well, I don't like ".orig" files lying 
+around in my Git repository
+that I might accidentally add back to my 
+repository.
+
+Let's add this back to our ".gitignore".
+
+Let's do our express commit: "updating 
+ignore to exclude merge files".
+Great, so we still have that ".orig" file;
+I really don't like that guy hanging 
+around, so I'm just going to delete him. 
+Great.
